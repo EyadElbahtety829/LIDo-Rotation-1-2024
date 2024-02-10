@@ -61,23 +61,25 @@ hoco <- data.frame(
   Hoco = Hocofile$HOCONUMBER
 )
 
-generate_tree <- function(tree_obj, tips=NULL){
-  plot1 <- ggtree(tree_obj, tips = tips) + #grep(readline(prompt = "Enter a household number: "), 
-                                                      #treerooted$tip.label))) +
-    geom_nodepoint(color="#0000FF", alpha=1/2, size=1) +
-    geom_tippoint(color="#FF3333", alpha = 1, shape=20, size=3) +
-    theme_tree2(plot.margin = margin(10, 10, 6, 6)) +
-    geom_tiplab(align = F, linesize = .5, size =3, 
-                hjust =0, offset = 0.0000000001) + #adjust hjust accordingly. - pushes it to higher x values (right), positive towards lower x values (left).
-    geom_treescale(x = 0.00000008, y = 5.5 ,fontsize = 4, linesize = 0.5, offset = 0.2) +
-    xlim(0, 7e-04) + #adjust xlim accordingly
-    ylim(0, 6) + #adjust ylim accordingly. Adjust y axis in the geom_treescale geom.
-    coord_cartesian(clip = "off") +
-    geom_nodelab(aes(subset = as.numeric(label) > 10), size = 3) #+
-    #labs(title = readline(prompt  = "Enter a title for the tree: ")) 
+### This chunk can be used for generating a function for plotting
+# generate_tree <- function(tree_obj, tips=NULL){
+#   plot1 <- ggtree(tree_obj, tips = tips) + #grep(readline(prompt = "Enter a household number: "), 
+#                                                       #treerooted$tip.label))) +
+#     geom_nodepoint(color="#0000FF", alpha=1/2, size=1) +
+#     geom_tippoint(color="#FF3333", alpha = 1, shape=20, size=3) +
+#     theme_tree2(plot.margin = margin(10, 10, 6, 6)) +
+#     geom_tiplab(align = F, linesize = .5, size =3, 
+#                 hjust =0, offset = 0.0000000001) + #adjust hjust accordingly. - pushes it to higher x values (right), positive towards lower x values (left).
+#     geom_treescale(x = 0.00000008, y = 5.5 ,fontsize = 4, linesize = 0.5, offset = 0.2) +
+#     xlim(0, 7e-04) + #adjust xlim accordingly
+#     ylim(0, 6) + #adjust ylim accordingly. Adjust y axis in the geom_treescale geom.
+#     coord_cartesian(clip = "off") +
+#     geom_nodelab(aes(subset = as.numeric(label) > 10), size = 3) #+
+#     #labs(title = readline(prompt  = "Enter a title for the tree: ")) 
 
-return(plot1)
-}
+# return(plot1)
+# }
+###
 
 #Plotting the Phylogenetic Tree using ggtree
 ggtree(treerooted, branch.length = -10) + 
